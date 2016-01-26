@@ -11,7 +11,7 @@ public class SendSMSBulkRequest{
 	private String userName;
 	private String groupId;
 	private String message;
-
+	private String tokenId;
 	/**
 	* 
 	* @return
@@ -64,6 +64,14 @@ public class SendSMSBulkRequest{
 	*/
 	public void setMessage(String message) {
 	this.message = message;
+	}
+
+	public String getTokenId() {
+		return tokenId;
+	}
+
+	public void setTokenId(String tokenId) {
+		this.tokenId = tokenId;
 	}
 
 

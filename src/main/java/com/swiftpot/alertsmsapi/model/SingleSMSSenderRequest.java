@@ -14,13 +14,18 @@ public class SingleSMSSenderRequest {
 	private String senderId;
 	private String message;
 	private String recieverPhoneNum;
+	private String userName;
+	private String tokenId;
 	
 	public SingleSMSSenderRequest(){}
-	public SingleSMSSenderRequest(String senderId, String message, String recieverPhoneNum) {
+	public SingleSMSSenderRequest(String senderId, String message, String recieverPhoneNum,
+								  String userName,String tokenId) {
 		super();
 		this.senderId = senderId;
 		this.message = message;
 		this.recieverPhoneNum = recieverPhoneNum;
+		this.userName = userName;
+		this.tokenId = tokenId;
 	}
 	public String getSenderId() {
 		return senderId;
@@ -40,6 +45,21 @@ public class SingleSMSSenderRequest {
 	public void setRecieverPhoneNum(String recieverPhoneNum) {
 		this.recieverPhoneNum = recieverPhoneNum;
 	}
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getTokenId() {
+		return tokenId;
+	}
+	public void setTokenId(String tokenId) {
+		this.tokenId = tokenId;
+	}
+	
 	
 
 }

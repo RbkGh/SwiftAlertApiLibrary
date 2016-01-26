@@ -26,7 +26,7 @@ public class GroupsManager {
 		return new GroupsManager();
 	}
 
-	public GetAllGroupsResponse getAllGroupsOnAccount(String userName, String url) {
+	public GetAllGroupsResponse getAllGroupsOnAccount(String userName,String tokenId, String url) {
 
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Content-Type", "application/x-www-form-urlencoded");
@@ -40,7 +40,7 @@ public class GroupsManager {
 		RestTemplate restTemplate = new RestTemplate();
 		GetAllGroupsResponse getAllGroupsResponse = new GetAllGroupsResponse();
 		try {
-			ResponseEntity<GetAllGroupsResponse> entityResponse = restTemplate.postForEntity(url+"?userName="+userName, entityRequest,
+			ResponseEntity<GetAllGroupsResponse> entityResponse = restTemplate.postForEntity(url+"?userName="+userName+"&tokenId="+tokenId, entityRequest,
 					GetAllGroupsResponse.class, params);
 			getAllGroupsResponse.setStatus(entityResponse.getBody().getStatus());
 			getAllGroupsResponse.setMessage(entityResponse.getBody().getMessage());

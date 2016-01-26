@@ -20,7 +20,7 @@ public class TestSendMessage {
 		// TODO Auto-generated method stub
 		try{SingleSMSSenderRequest singleRequest = new SingleSMSSenderRequest("SWIFTPOT", 
 				"hELLO,tEST FROM API LIBRARY", 
-				"0206895796");
+				"0206895796","","");
 		MessageSender msgSender = new MessageSender();
 		SingleSMSSenderResponse response = msgSender.sendMessage(singleRequest);
 		
