@@ -14,6 +14,7 @@ private String userName;
 private String groupId;
 private String groupName;
 private Long dateCreated;
+private String noOfContacts;
 
 /**
 * 
@@ -104,4 +105,20 @@ return dateCreated;
 public void setDateCreated(Long dateCreated) {
 this.dateCreated = dateCreated;
 }
+
+/**
+ * @return the noOfContacts
+ */
+public String getNoOfContacts() {
+	return noOfContacts;
+}
+
+/**
+ * @param noOfContacts the noOfContacts to set
+ */
+public void setNoOfContacts(String noOfContacts) {
+	this.noOfContacts = noOfContacts;
+}
+
+
 }
