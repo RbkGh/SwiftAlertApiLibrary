@@ -3,6 +3,8 @@
  */
 package com.swiftpot.alertsmsapi.groups;
 
+import com.swiftpot.alertsmsapi.extra.ResponseCodes;
+import com.swiftpot.alertsmsapi.extra.ResponseMessages;
 import com.swiftpot.alertsmsapi.model.AddContactsToGroupRequest;
 import com.swiftpot.alertsmsapi.model.AddContactsToGroupResponse;
 import com.swiftpot.alertsmsapi.model.GetAllGroupsResponse;
@@ -30,10 +32,10 @@ public class GroupsManager {
 
 	/**
 	 *	This will return all Groups Registered to Account.
-	 * @param userName
-	 * @param tokenId
-	 * @param url url of endPoint
-	 * @return GetAllGroupsResponse
+	 * @param userName {@link String}
+ 	 * @param  url {@link String}url of endPoint
+	 * @param tokenId {@link String}
+	 * @return {@link GetAllGroupsResponse}
 	 */
 	public GetAllGroupsResponse getAllGroupsOnAccount(String userName,String tokenId, String url) {
 
@@ -67,7 +69,13 @@ public class GroupsManager {
 
 	}
 
-
+	/**
+	 *
+	 * @param addContactsToGroupRequest {@link AddContactsToGroupRequest} object with set parameters
+	 * @param url-the url endpoint of resource {@link String}
+	 * @return {@link AddContactsToGroupResponse}
+	 *
+	 */
 	public AddContactsToGroupResponse addContactsToGroup(AddContactsToGroupRequest addContactsToGroupRequest,String url){
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
@@ -83,13 +91,15 @@ public class GroupsManager {
 		addContactsToGroupResponse.setMessage(entityResponse.getBody().getMessage());
 		addContactsToGroupResponse.setResponseObject(entityResponse.getBody().getResponseObject());
 	}catch (Exception e){
-
-
+		addContactsToGroupResponse.setStatus(String.valueOf(ResponseCodes.ERROR.getResponseCode()));
+		addContactsToGroupResponse.setMessage(ResponseMessages.ERROR.getResponseMsg());
+		System.err.println("Error=\n\n::");
+		e.printStackTrace();
 	}
 
 
 
-		return null;
+		return addContactsToGroupResponse;
 	}
 
 

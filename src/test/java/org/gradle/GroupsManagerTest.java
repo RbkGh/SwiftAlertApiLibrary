@@ -12,5 +12,6 @@ public class GroupsManagerTest {
     public static void main(String[] args){
         GroupsManager groupsManager = new GroupsManager();
         //groupsManager.getAllGroupsOnAccount()
+        //groupsManager.addContactsToGroup()
     }
 }
