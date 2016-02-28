@@ -3,7 +3,9 @@ package com.swiftpot.alertsmsapi.model;
 public class IncomingPayload {
 	private String status;
 	private String message;
-	
+	private Object responseObject;
+
+
 	public String getStatus() {
 		return status;
 	}
@@ -16,5 +18,11 @@ public class IncomingPayload {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+	public Object getResponseObject() {
+		return responseObject;
+	}
+	public void setResponseObject(Object responseObject) {
+		this.responseObject = responseObject;
+	}
+
 }
