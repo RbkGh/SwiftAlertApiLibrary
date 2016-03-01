@@ -11,6 +11,8 @@ import com.swiftpot.alertsmsapi.model.GetAllGroupsResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -77,16 +79,14 @@ public class GroupsManager {
 	 *
 	 */
 	public AddContactsToGroupResponse addContactsToGroup(AddContactsToGroupRequest addContactsToGroupRequest,String url){
-		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-		headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
-		headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
-		Map<String, String> params = new HashMap<String, String>();
-		HttpEntity<AddContactsToGroupResponse> entityRequest = new HttpEntity<AddContactsToGroupResponse>(headers);
-		RestTemplate restTemplate = new RestTemplate();
+
+
 		AddContactsToGroupResponse addContactsToGroupResponse = new AddContactsToGroupResponse();
 	try {
-
-		ResponseEntity<AddContactsToGroupResponse> entityResponse = restTemplate.postForEntity(url,entityRequest,AddContactsToGroupResponse.class,params);
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+		restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+		ResponseEntity<AddContactsToGroupResponse> entityResponse = restTemplate.postForEntity(url,addContactsToGroupRequest,AddContactsToGroupResponse.class);
 		addContactsToGroupResponse.setStatus(entityResponse.getBody().getStatus());
 		addContactsToGroupResponse.setMessage(entityResponse.getBody().getMessage());
 		addContactsToGroupResponse.setResponseObject(entityResponse.getBody().getResponseObject());
